@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoCharcoal.id - Briket Arang Ramah Lingkungan</title>
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        /* Variables */
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #34495E;
+            --accent-color: #3453db;
+            --text-color: #333;
+            --light-bg: #F8F9FA;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-hover: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        /* Base Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: var(--white);
+            padding: 1rem 0;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: var(--text-color) !important;
+            margin: 0 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/banner.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        /* Card Styles */
+        .icon-box {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .icon-box:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .icon-box i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .icon-box:hover i {
+            transform: scale(1.1);
+            color: var(--secondary-color);
+        }
+
+        .product-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            height: 100%;
+            background-color: var(--white);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-card img {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-success {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--white);
+        }
+
+        .btn-success:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline-light {
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--white);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .social-icon {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Process Steps Styles */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .step i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover i {
+            transform: scale(1.1) rotate(5deg);
+            color: var(--primary-color);
+        }
+
+        .step h3 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            color: var(--text-color);
+            margin-bottom: 0;
+        }
+
+        /* Testimonials Styles */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .testimonial img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--accent-color);
+        }
+
+        .testimonial blockquote {
+            font-style: italic;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            position: relative;
+            padding: 0 1rem;
+        }
+
+        .testimonial blockquote:before,
+        .testimonial blockquote:after {
+            content: '"';
+            color: var(--accent-color);
+            font-size: 2rem;
+            position: absolute;
+        }
+
+        .testimonial blockquote:before {
+            left: -0.5rem;
+            top: -0.5rem;
+        }
+
+        .testimonial blockquote:after {
+            right: -0.5rem;
+            bottom: -0.5rem;
+        }
+
+        .testimonial cite {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .icon-box {
+                margin-bottom: 2rem;
+            }
+
+            .process-steps,
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+
+            .step,
+            .testimonial {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-leaf me-2"></i>EcoCharcoal.id
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tentang.html">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="artikel.html">Artikel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="display-4 fw-bold animate-pulse">EcoCharcoal.id</h1>
+                <p class="lead">Briket Arang Ramah Lingkungan untuk Masa Depan Lebih Hijau</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="produk.html" class="btn btn-success btn-lg">Lihat Produk</a>
+                    <a href="kontak.html" class="btn btn-outline-light btn-lg">Hubungi Kami</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <a href="#features" class="scroll-down animate-float">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="container">
+            <h2 class="section-title">Mengapa Memilih Kami?</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="icon-box">
+                        <i class="fas fa-leaf"></i>
+                        <h4>Ramah Lingkungan</h4>
+                        <p>Produk kami terbuat dari bahan alami dan proses produksi yang ramah lingkungan.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box">
+                        <i class="fas fa-fire"></i>
+                        <h4>Kualitas Terbaik</h4>
+                        <p>Briket arang berkualitas tinggi dengan pembakaran yang stabil dan efisien.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box">
+                        <i class="fas fa-truck"></i>
+                        <h4>Pengiriman Cepat</h4>
+                        <p>Layanan pengiriman cepat ke seluruh Indonesia dengan harga terjangkau.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Preview -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Produk Unggulan</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="product-card">
+                        <img src="images/briket bbq.png" alt="Briket BBQ" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Briket BBQ</h5>
+                            <p class="card-text">Ideal untuk kegiatan BBQ dan memasak di luar ruangan.</p>
+                            <a href="produk.html" class="btn btn-success">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="product-card">
+                        <img src="images/briket2.jpg" alt="Briket Premium" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Briket Premium</h5>
+                            <p class="card-text">Kualitas terbaik untuk kebutuhan industri dan komersial.</p>
+                            <a href="produk.html" class="btn btn-success">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="product-card">
+                        <img src="images/briket3.jpg" alt="Briket Rumah Tangga" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Briket Rumah Tangga</h5>
+                            <p class="card-text">Ekonomis dan efisien untuk kebutuhan sehari-hari.</p>
+                            <a href="produk.html" class="btn btn-success">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proses Produksi -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Proses Produksi Berkualitas</h2>
+            <p class="text-center mb-5">Kami menjamin kualitas produk melalui proses produksi yang ketat</p>
+            <div class="process-steps">
+                <div class="step">
+                    <i class="fas fa-tree"></i>
+                    <h3>Pemilihan Bahan Baku</h3>
+                    <p>Bahan baku pilihan berkualitas tinggi</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Proses Produksi</h3>
+                    <p>Teknologi modern dan standar tinggi</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Quality Control</h3>
+                    <p>Pengujian ketat untuk hasil terbaik</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-truck"></i>
+                    <h3>Pengiriman</h3>
+                    <p>Pengiriman cepat dan aman</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Apa Kata Mereka?</h2>
+            <p class="text-center mb-5">Testimoni dari pelanggan setia kami</p>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <img src="images/ahmad.png" alt="Briket 4">
+                    <blockquote>
+                        "Briket arang ini sangat bagus, pembakaran stabil dan tahan lama. Sangat cocok untuk usaha BBQ saya."
+                    </blockquote>
+                    <cite>- Bapak Ahmad, Pemilik BBQ Restaurant</cite>
+                </div>
+                <div class="testimonial">
+                    <img src="images/siti.jpeg" alt="Briket 5">
+                    <blockquote>
+                        "Kualitas produk sangat terjamin, pengiriman cepat dan pelayanan memuaskan."
+                    </blockquote>
+                    <cite>- Ibu Siti, Pemilik Warung Makan</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4><i class="fas fa-leaf me-2"></i>EcoCharcoal.id</h4>
+                    <p>Briket Arang Ramah Lingkungan untuk Masa Depan Lebih Hijau</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Beranda</a></li>
+                        <li><a href="tentang.html" class="text-white">Tentang Kami</a></li>
+                        <li><a href="produk.html" class="text-white">Produk</a></li>
+                        <li><a href="kontak.html" class="text-white">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-end">
+                    <h5>Ikuti Kami</h5>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/vitoroovrs" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/vitooel" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4">
+            <div class="text-center">
+                <p>Hafizh Vito El Kayyis XII RPL © 2025 | Rekayasa Perangkat Lunak <a href="https://smkmuh1-yog.sch.id/" target="_blank" class="text-white">SMK Muhiyo</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate elements on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        });
+
+        document.querySelectorAll('.card, .icon-box').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
+
